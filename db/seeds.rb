@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "Cleaning database..."
+Snack.destroy_all
+
+puts "Creating..."
+Snack.create(name: "snack 001", description: "i am snack 1", quantity: 101, price: 1.5, image_url: "")
+puts "snack 001"
+
+
+puts "completed"

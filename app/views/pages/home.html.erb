@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row my-2">
+      <% @snacks.each do |snack| %>
+        <div class="col-4 col-sm-6 mb-4" >
+                <div class="bg-white rounded shadow h-100">
+                <div class="d-flex">
+                  <div class="text-center pt-2 flex-grow-1">
+                    <%= image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                  </div>
+                    <div class="fa-solid fa-cart-plus pt-2 px-2">
+                    </div>
+                </div>
+                    <div class="p-3 rounded-bottom d-flex flex-column">
+                      <strong><%= snack.name %> <span class="text-muted font-weight-normal"></span></strong>
+                      <small class="text-muted"><%= snack.description %></small>
+                      <div class="d-flex align-items-end justify-content-between pt-4">
+                        <div>
+                          $<small class="flex-grow-1"><%= snack.price %></small>
+                        </div>
+                        <small class="text-right flex-shrink-0"><%= snack.quantity %>pcs</small>
+                      </div>
+                    </div>
+                </div>
+        </div>
+      <% end %>
+  </div>
+</div>

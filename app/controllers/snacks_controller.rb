@@ -19,6 +19,6 @@ end
   private
 
   def snack_params
-    params.require(:snack).permit(:name, :description, :price, :quantity, :image_url)
+    params.require(:snack).permit(:name, :description, :price, :quantity, :photo)
   end
 end

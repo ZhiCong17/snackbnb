@@ -1,0 +1,5 @@
+<h1>i am edit page</h1>
+
+<%= render "form", snack: @snack %>
+
+<%= cl_image_tag @snack.photo.key, height: 300, width: 400 if @snack.photo.attached? %>

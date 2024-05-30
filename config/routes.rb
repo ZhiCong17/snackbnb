@@ -10,4 +10,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   # root to: "pages#index"
+  # get 'snacks/:id/edit', to: 'snacks#edit'
+  # patch 'snacks/:id', to: 'snacks#update'
+  # get 'snack', to: 'snacks#show'
+  resources :snacks
+  #, as: 'edit_snack'
+  # resources :users do
+  #   resources :snacks
+  # end
 end

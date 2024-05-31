@@ -5,4 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :snacks
+  has_many :orders
+
+  def cart
+    Order.where(
+      user: self,
+      status: 'unpaid'
+    ).first
+  end
+
+  def cart?
+    !cart.nil?
+  end
 end

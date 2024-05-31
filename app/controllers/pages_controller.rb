@@ -2,6 +2,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @snacks = Snack.all
+    raise
+    @q = Snack.ransack(params[:q])
+    @snacks = @q.result(distinct: true)
   end
+
 end

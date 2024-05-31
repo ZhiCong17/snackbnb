@@ -30,6 +30,7 @@
             </div>
           </li>
         <% else %>
+          <%= render 'pages/form' %>
           <div class="nav-item d-flex">
             <div class="fa-solid fa-cart-shopping pt-3 mx-2"></div>
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

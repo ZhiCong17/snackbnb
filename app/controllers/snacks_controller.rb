@@ -1,6 +1,9 @@
 class SnacksController < ApplicationController
   def show
     @snack = Snack.find(params[:id])
+    @query_params = {
+      cart: 5
+    }
   end
 
   def new
@@ -12,7 +15,7 @@ class SnacksController < ApplicationController
     @snack.user = current_user
 
     if @snack.save
-      redirect_to root_path
+      redirect_to snack_path(@snack)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,9 +31,21 @@ class SnacksController < ApplicationController
     redirect_to snack_path(@snack)
   end
 
+  def add_to_cart
+
+  end
+
   private
 
   def snack_params
     params.require(:snack).permit(:name, :description, :price, :quantity, :photo)
   end
+
+  # def cart_params
+  #   if Order.present?
+
+  #   else
+
+  #   end
+  # end
 end

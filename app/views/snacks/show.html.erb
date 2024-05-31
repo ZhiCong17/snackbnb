@@ -1,6 +1,10 @@
 <div class="container mt-2">
   <div>
-    <%= image_tag @snack.image_url, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
+    <% if @snack.photo.attached? %>
+      <%= cl_image_tag @snack.photo.key, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
+    <% else %>
+      <%= image_tag @snack.image_url, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
+    <% end %>
   </div>
 
   <div class="row">
@@ -26,7 +30,8 @@
 
     <div class="col-3">
       <div class='card'>
-        <button type="button" class="btn btn-light">Add to Cart</button>
+        <%= link_to 'Add to cart', add_to_cart_snack_path(@snack, @query_params), class: "btn btn-primary" %>
+        <%# <button type="button" class="btn btn-light">Add to Cart</button> %>
       </div>
     </div>
   </div>

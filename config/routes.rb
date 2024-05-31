@@ -15,7 +15,5 @@ Rails.application.routes.draw do
   # get 'snack', to: 'snacks#show'
   resources :snacks
   #, as: 'edit_snack'
-  # resources :users do
-  #   resources :snacks
-  # end
+
 end

@@ -6,11 +6,19 @@ class SnacksController < ApplicationController
     @snack = Snack.new
   end
 
+  def create
+    @snack = Snack.new(snack_params)
+    @snack.user = current_user
+
+    if @snack.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
-    # @user = User.find(params[:id])
-    # @user = current_user
     @snack = Snack.find(params[:id])
-    # @snack.user = @user
   end
 
   def update

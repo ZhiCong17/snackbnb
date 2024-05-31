@@ -3,6 +3,10 @@ class SnacksController < ApplicationController
     @snack = Snack.find(params[:id])
   end
 
+  def haha
+    raise
+  end
+
   def edit
     # @user = User.find(params[:id])
     # @user = current_user

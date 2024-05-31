@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :snacks
   #, as: 'edit_snack'
 
+
 end

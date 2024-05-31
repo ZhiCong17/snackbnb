@@ -13,10 +13,13 @@ Rails.application.routes.draw do
   # get 'snacks/:id/edit', to: 'snacks#edit'
   # patch 'snacks/:id', to: 'snacks#update'
   # get 'snack', to: 'snacks#show'
-  resources :snacks
   resources :orders
+  resources :snacks do
+    member do
+      get :add_to_cart
+    end
+  end
   #, as: 'edit_snack'
-  # resources :users do
-  #   resources :snacks
-  # end
+
+
 end

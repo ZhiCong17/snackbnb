@@ -31,5 +31,5 @@ super_ring = { name: "super ring", description: "Kids-all time favourite snack",
 [potato_chips, chocolate_bar, gummy, honey_twist, super_ring].each do |attributes|
   snack = Snack.create!(attributes)
   puts "Created #{snack.name}"
-end
+end3
 puts "Finished!"

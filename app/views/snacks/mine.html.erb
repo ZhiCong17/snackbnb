@@ -39,7 +39,12 @@
                 <div class="bg-white rounded shadow h-100">
                 <div class="d-flex">
                   <div class="text-center pt-2 flex-grow-1">
-                    <%= image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                    <%# image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                     <% if snack.photo.attached? %>
+                      <%= cl_image_tag snack.photo.key, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                    <% else %>
+                      <%= image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                    <% end %>
                   </div>
                     <div class="fa-solid fa-pen-to-square pt-2 px-2">
                       <%# link_to "fa-solid fa-pen-to-square pt-2 px-2" %>

@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="banner flex-grow-1" >
+    <%= image_tag("https://mweb-cdn.karousell.com/build/profile-bg-0cfd0a9fd0.jpg", :alt => "background image", width: 1100, height:100) %>
+  </div>
+  <div class="card-bar d-flex border-bottom py-4">
+    <div class="card-blank col-3 d-flex"></div>
+    <div class="card-lists col-9 d-flex">
+      <div class="card-list">
+        <%= link_to "Listing" %>
+        <%= link_to "Review" %>
+        <%= link_to "Coins" %>
+        <%= link_to "Balance" %>
+        <%= link_to "CarouBiz" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-wrapper d-flex">
+    <div class="side-bar col-3 font-family-roboto">
+      <div class="card-avatar">
+        <%# image_tag("https://i.pinimg.com/originals/03/c0/03/03c003e493e552c3a60214396146b68c.jpg" :alt => "avatar") %>
+      </div>
+      <div class="list-unstyled">
+        <li><%= current_user.email %> </li>
+        <li><i class="fa-solid fa-star"></i>No rating yet</li>
+        <li>Singapore . Joined 1y5m</li>
+        <li>Verified <i class="fa-solid fa-envelope"></i><i class="fa-solid fa-phone"></i></li>
+        <div class="d-flex">
+          <li>Followers</li>
+          <li>Following</li>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-info col-9 px-4">
+      <div class="row my-2">
+      <% @snacks.each do |snack| %>
+        <div class="col-4 col-sm-6 mb-4" >
+                <div class="bg-white rounded shadow h-100">
+                <div class="d-flex">
+                  <div class="text-center pt-2 flex-grow-1">
+                    <%# image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                     <% if snack.photo.attached? %>
+                      <%= cl_image_tag snack.photo.key, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                    <% else %>
+                      <%= image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+                    <% end %>
+                  </div>
+                    <div class="fa-solid fa-pen-to-square pt-2 px-2">
+                      <%# link_to "fa-solid fa-pen-to-square pt-2 px-2" %>
+                    </div>
+                </div>
+
+                    <div class="p-3 rounded-bottom d-flex flex-column">
+                      <strong><%= snack.name %> <span class="text-muted font-weight-normal"></span></strong>
+                      <small class="text-muted"><%= snack.description %></small>
+                      <div class="d-flex align-items-end justify-content-between pt-4">
+                        <div>
+                          $<small class="flex-grow-1"><%= snack.price %></small>
+                        </div>
+                        <small class="text-right flex-shrink-0"><%= snack.quantity %>pcs</small>
+                      </div>
+                    </div>
+                </div>
+        </div>
+      <% end %>
+  </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>

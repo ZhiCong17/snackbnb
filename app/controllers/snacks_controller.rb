@@ -1,4 +1,8 @@
 class SnacksController < ApplicationController
+  def mine
+    @snacks = Snack.where(user: current_user)
+  end
+  
   def show
     @snack = Snack.find(params[:id])
     @query_params = {

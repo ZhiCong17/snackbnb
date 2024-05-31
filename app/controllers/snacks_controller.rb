@@ -1,7 +1,7 @@
 class SnacksController < ApplicationController
-def show
-
-end
+  def mine
+    @snacks = Snack.where(user: current_user)
+  end
 
   def edit
     # @user = User.find(params[:id])

@@ -12,7 +12,7 @@ puts "Cleaning database..."
 User.destroy_all
 Snack.destroy_all
 
-puts "Creating user..."
+puts "Creating user...
 jia = User.create!( email: "ho@hotmail.com", password: "jia123" )
 ning = User.create!( email: "ning@gmail.com", password: "ning123" )
 

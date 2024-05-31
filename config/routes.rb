@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   # patch 'snacks/:id', to: 'snacks#update'
   # get 'snack', to: 'snacks#show'
   resources :snacks
-  #, as: 'edit_snack'
+
+  get 'mine', to: 'snacks#mine'
+  # as: 'edit_snack'
   # resources :users do
   #   resources :snacks
   # end

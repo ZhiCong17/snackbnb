@@ -13,7 +13,7 @@ User.destroy_all
 Snack.destroy_all
 Order.destroy_all
 
-puts "Creating user...
+puts "Creating user..."
 jia = User.create!( email: "ho@hotmail.com", password: "jia123" )
 ning = User.create!( email: "ning@gmail.com", password: "ning123" )
 
@@ -30,8 +30,9 @@ super_ring = Snack.create!( name: "super ring", description: "Kids-all time favo
 # end
 
 puts "Creating order..."
-order1 = Order.create!(status: false, user: jia )
+order1 = Order.create!(status: false, user: jia)
 order2 = Order.create!(status: false, user: ning)
+order3 = Order.create!(status: false, user: jia)
 
 puts "Creating order_list..."
 order_list1 = OrderItem.create!(order: order1, snack: gummy, snack_quantity: 5)
@@ -39,5 +40,7 @@ order_list2 = OrderItem.create!(order: order1, snack: potato_chips, snack_quanti
 order_list3 = OrderItem.create!(order: order1, snack: super_ring, snack_quantity: 6)
 order_list4 = OrderItem.create!(order: order2, snack: chocolate_bar, snack_quantity: 1)
 order_list5 = OrderItem.create!(order: order2, snack: honey_twist, snack_quantity: 3)
+order_list6 = OrderItem.create!(order: order3, snack: honey_twist, snack_quantity: 3)
+order_list7 = OrderItem.create!(order: order3, snack: chocolate_bar, snack_quantity: 7)
 
 puts "Finished!"

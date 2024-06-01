@@ -1,25 +1,35 @@
 <div class="container">
-  <% @order_list.each do |list| %>
-  <div class="card-product my-2">
-            <%  snacks = Snack.where(id: list.snack_id) %>
-            <% snack = snacks.first
-            name = snack.name
-            image = snack.image_url
-            description = snack.description
-            price_per_unit = snack.price
-            total_price = list.snack_quantity * snack.price
-          %>
-      <%= image_tag image, alt: name, height: 80, width: 80 , class: "rounded" %>
-      <div class="card-product-infos flex-grow-1">
-        <h2><%= name %></h2>
-        <p><%= description %></p>
-      </div>
-      <div class= mx-5 >
-        <p><small>Price:<%= price_per_unit %>$</small></p>
-        <p><small>Quantity:<%= list.snack_quantity %>pcs</small></p>
-        <p><small>Total Payment: <%= total_price %>$</small></p>
-        <button class = "btn btn-primary rounded"><small>CheckOut</small></button>
-      </div>
-  </div>
-    <% end %>
+  <% @order_lists.each do |lists| %>
+ <div class="border border-dark my-2 p-2 rounded-5">
+      <% lists.each do |list| %>
+        <div class="card-product my-2">
+                  <%  snacks = Snack.where(id: list.snack_id) %>
+                  <% snack = snacks.first
+                  name = snack.name
+                  image = snack.image_url
+                  description = snack.description
+                  price_per_unit = snack.price
+                  total_price = list.snack_quantity * snack.price
+                  @total += total_price
+                %>
+            <%= image_tag image, alt: name, height: 80, width: 80 , class: "rounded" %>
+            <div class="card-product-infos flex-grow-1">
+              <h2><%= name %></h2>
+              <p><%= description %></p>
+            </div>
+            <div class= mx-5 >
+              <p><small>Price:<%= price_per_unit %>$</small></p>
+              <p><small>Quantity:<%= list.snack_quantity %>pcs</small></p>
+              <p><small>Total Price: <%= total_price %>$</small></p>
+            </div>
+        </div>
+      <% end %>
 </div>
+  <% end %>
+</div>
+  <div class="fixed-bottom-container d-flex align-items-end flex-column">
+    <div class="mt-auto p-2">
+      <%= @total %>$
+      <button class = "btn btn-primary rounded-3"><small>CheckOut</small></button>
+  </div>
+  </div>

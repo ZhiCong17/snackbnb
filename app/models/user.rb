@@ -6,4 +6,15 @@ class User < ApplicationRecord
 
   has_many :snacks
   has_many :orders
+
+  def cart
+    Order.where(
+      user: self,
+      status: 'unpaid'
+    ).first
+  end
+
+  def cart?
+    cart.present?
+  end
 end

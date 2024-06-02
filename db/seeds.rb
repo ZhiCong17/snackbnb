@@ -14,8 +14,9 @@ Snack.destroy_all
 Order.destroy_all
 
 puts "Creating user..."
-jia = User.create!( email: "ho@hotmail.com", password: "jia123" )
-ning = User.create!( email: "ning@gmail.com", password: "ning123" )
+jia = User.create!(email: "ho@hotmail.com", password: "jia123")
+ning = User.create!(email: "ning@gmail.com", password: "ning123")
+rick = User.create!(email: "rick@gmail.com", password: "password123")
 
 puts "Creating snacks..."
 potato_chips = Snack.create!( name: "Potato Chips", description: "A thin deposit of potato paste) that has been deep fried, baked, or air fried until crunchy", price: 5, quantity: 20, image_url: "https://admin115421-prod.s3.ap-southeast-2.amazonaws.com/public/product-zVPDCRRIjchw2A8tMLY5H-0.jpg", user: jia )
@@ -30,7 +31,7 @@ super_ring = Snack.create!( name: "super ring", description: "Kids-all time favo
 # end
 
 puts "Creating order..."
-order1 = Order.create!(user: jia)
+order1 = Order.create!(user: jia, status: "paid")
 order2 = Order.create!(user: ning)
 order3 = Order.create!(user: jia)
 

@@ -1,4 +1,9 @@
 <div class="container">
+<% if @order_list.nil? %>
+ <div class="text-center" id = center>
+              <%= image_tag("https://i.pinimg.com/originals/ce/a0/0d/cea00d5472fb477c9d2bf8724fac768d.jpg", alt: "Empty History") %>
+              <h5></h5>
+  <% else %>
   <% @order_lists.each do |lists| %>
           <% order_id = lists.first.order_id %>
           <% order = Order.find_by(id: order_id.to_i) %>
@@ -28,6 +33,7 @@
               <p><small>Total Price: <%= total_price %>$</small></p>
             </div>
         </div>
+  <% end %>
   <% end %>
 </div>
 

@@ -1,5 +1,30 @@
 <div class="container">
+
+<% if @order_list.nil? || @order_list.count == 0 %>
+
+        <div class="text-center" id = center>
+              <%= image_tag("https://chillydraji.files.wordpress.com/2015/08/empty_cart.jpeg", alt: "Empty Cart") %>
+              <h5>Ohh!!! Your Cart is empty</h5>
+              <p> Looks like you have not added anything to you cart. </p>
+              <p> Go ahead & explore
+              <%= link_to "SNACK", root_path, class: "fw-bolder text-decoration-none"%>!!!
+              </p>
+            </div>
+
+
+<% else %>
   <% @order_lists.each do |lists| %>
+
+    <% if lists.nil? %>
+           <div class="text-center" id = center>
+              <%= image_tag("https://chillydraji.files.wordpress.com/2015/08/empty_cart.jpeg", alt: "Empty Cart") %>
+              <h5>Ohh!!! Your Cart is empty</h5>
+              <p> Looks like you have not added anything to you cart. </p>
+              <p> Go ahead & explore
+              <%= link_to "SNACK", root_path, class: "fw-bolder text-decoration-none"%>!!!
+              </p>
+            </div>
+    <% else %>
           <% order_id = lists.first.order_id %>
           <% order = Order.find_by(id: order_id.to_i) %>
 
@@ -22,7 +47,7 @@
               <p><%= description %></p>
             </div>
             <div class= mx-5 >
-              <%= link_to "Delete", order_item_path(list), data: {turbo_method: :delete} %>
+              <%= link_to "🗑️", order_item_path(list), data: {turbo_method: :delete} , class: "text-decoration-none bg-primary py-1 px-3 rounded-3"%>
               <p><small>Price:<%= price_per_unit %>$</small></p>
               <p><small>Quantity:<%= list.snack_quantity %>pcs</small></p>
               <p><small>Total Price: <%= total_price %>$</small></p>
@@ -37,6 +62,8 @@
 
           </div>
         </div>
+    <% end %>
+  <% end %>
 <% end %>
 
 </div>

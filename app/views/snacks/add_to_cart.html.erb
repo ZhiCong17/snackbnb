@@ -1,38 +1,8 @@
 <div class="container mt-2">
-  <div>
-    <% if @snack.photo.attached? %>
-      <%= cl_image_tag @snack.photo.key, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
-    <% else %>
-      <%= image_tag @snack.image_url, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="col-9">
-      <div>
-        <img src="https://sl3-cdn.karousell.com/components/ap_certified_logo.svg", class='mb-2'>
-        <h1>
-          <%= @snack.name %>
-        </h1>
-        <p>
-          S$ <%= @snack.price %>
-        </p>
-
-      </div>
-      <div>
-        <h2>Details</h2>
-      </div>
-      <div>
-        <h2>Description</h2>
-        <p><%= @snack.description %></p>
-      </div>
-    </div>
-
-    <div class="col-3">
-      <div class='card'>
-        <%= link_to 'Add to cart', add_to_cart_snack_path(@snack, @query_params), class: "btn btn-primary" %>
-        <%# <button type="button" class="btn btn-light">Add to Cart</button> %>
-      </div>
-    </div>
-  </div>
+  <h1>Order page</h1>
+  <p>How many <%= @snack.name %> would you like to purchase?</p>
+  <%= simple_form_for [@cart, @order_item] do |f| %>
+    <%= f.input :snack_quantity %>
+    <%= f.submit %>
+  <% end %>
 </div>

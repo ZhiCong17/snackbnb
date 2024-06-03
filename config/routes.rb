@@ -19,8 +19,15 @@ Rails.application.routes.draw do
   # resources :users do
   #   resources :snacks
   # end
-  resources :orders
-\
+  # patch 'orders/:id', to: 'orders#update', as: :update_order
+  resources :orders do
+    member do
+      patch 'update_status'
+    end
+  end
+
+  get 'order_history', to: 'orders#order_history'
+
   resources :snacks do
     member do
       get "add_to_cart", to: "snacks#add_to_cart"
@@ -31,6 +38,4 @@ Rails.application.routes.draw do
 
   get 'cart', to: 'orders#cart'
   #, as: 'edit_snack'
-
-
 end

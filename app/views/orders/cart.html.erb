@@ -16,8 +16,8 @@
                   total_price = list.snack_quantity * snack.price
                   @total += total_price
                 %>
-            <% if @snack.photo.attached? %>
-              <%= cl_image_tag @snack.photo.key, alt: name, height: 80, width: 80 , class: "rounded" %>
+            <% if snack.photo.attached? %>
+              <%= cl_image_tag snack.photo.key, alt: name, height: 80, width: 80 , class: "rounded" %>
             <% else %>
               <%= image_tag image, alt: name, height: 80, width: 80 , class: "rounded" %>
             <% end %>

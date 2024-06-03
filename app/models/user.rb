@@ -8,10 +8,17 @@ class User < ApplicationRecord
   has_many :orders
 
   def cart
-    Order.where(
-      user: self,
-      status: 'unpaid'
-    ).first
+    # if the user have cart or not
+    # if yes, then we use that cart
+    # if no, then create a new cart
+
+    my_cart = orders.find_by(status: "unpaid")
+
+    if my_cart.nil?
+      Order.create(user: self)
+    else
+      my_cart
+    end
   end
 
   def cart?

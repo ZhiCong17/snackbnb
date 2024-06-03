@@ -10,4 +10,10 @@ class OrdersController < ApplicationController
       @order_lists << @order_list
     end
   end
+
+  def cart
+    # get order that has status unpaid
+    @cart = current_user.orders.find_by(status: "unpaid")
+  end
+
 end

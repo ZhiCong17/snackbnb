@@ -19,7 +19,17 @@ Rails.application.routes.draw do
   # resources :users do
   #   resources :snacks
   # end
-  resources :orders
+
+  get 'cart', to: 'orders#cart'
+
+
+
+
+  resources :orders do
+    member do
+
+    end
+  end
   resources :snacks do
     member do
       get "add_to_cart", to: "snacks#add_to_cart"

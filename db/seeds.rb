@@ -31,17 +31,17 @@ super_ring = Snack.create!( name: "super ring", description: "Kids-all time favo
 # end
 
 puts "Creating order..."
-order1 = Order.create!(user: jia, status: "paid")
-order2 = Order.create!(user: ning)
-order3 = Order.create!(user: jia)
+# order1 = Order.create!(user: jia, status: "paid")
+# order2 = Order.create!(user: ning)
+# order3 = Order.create!(user: jia)
 
 puts "Creating order_list..."
-order_list1 = OrderItem.create!(order: order1, snack: gummy, snack_quantity: 5)
-order_list2 = OrderItem.create!(order: order1, snack: potato_chips, snack_quantity: 2)
-order_list3 = OrderItem.create!(order: order1, snack: super_ring, snack_quantity: 6)
-order_list4 = OrderItem.create!(order: order2, snack: chocolate_bar, snack_quantity: 1)
-order_list5 = OrderItem.create!(order: order2, snack: honey_twist, snack_quantity: 3)
-order_list6 = OrderItem.create!(order: order3, snack: honey_twist, snack_quantity: 3)
-order_list7 = OrderItem.create!(order: order3, snack: chocolate_bar, snack_quantity: 7)
+# order_list1 = OrderItem.create!(order: order1, snack: gummy, snack_quantity: 5)
+# order_list2 = OrderItem.create!(order: order1, snack: potato_chips, snack_quantity: 2)
+# order_list3 = OrderItem.create!(order: order1, snack: super_ring, snack_quantity: 6)
+# order_list4 = OrderItem.create!(order: order2, snack: chocolate_bar, snack_quantity: 1)
+# order_list5 = OrderItem.create!(order: order2, snack: honey_twist, snack_quantity: 3)
+# order_list6 = OrderItem.create!(order: order3, snack: honey_twist, snack_quantity: 3)
+# order_list7 = OrderItem.create!(order: order3, snack: chocolate_bar, snack_quantity: 7)
 
 puts "Finished!"

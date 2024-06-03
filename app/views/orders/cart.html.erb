@@ -1,0 +1,43 @@
+<div class="container">
+  <% @order_lists.each do |lists| %>
+          <% order_id = lists.first.order_id %>
+          <% order = Order.find_by(id: order_id.to_i) %>
+      
+ <div class="border border-dark m-3 p-2 rounded-5">
+      <p>Order ID: <%= order.id %></p>
+      <% lists.each do |list| %>
+        <div class="card-product my-2">
+                  <%  snacks = Snack.where(id: list.snack_id) %>
+                  <% snack = snacks.first
+                  name = snack.name
+                  image = snack.image_url
+                  description = snack.description
+                  price_per_unit = snack.price
+                  total_price = list.snack_quantity * snack.price
+                  @total += total_price
+                %>
+            <%= image_tag image, alt: name, height: 80, width: 80 , class: "rounded" %>
+            <div class="card-product-infos flex-grow-1">
+              <h2><%= name %></h2>
+              <p><%= description %></p>
+            </div>
+            <div class= mx-5 >
+              <p><small>Price:<%= price_per_unit %>$</small></p>
+              <p><small>Quantity:<%= list.snack_quantity %>pcs</small></p>
+              <p><small>Total Price: <%= total_price %>$</small></p>
+            </div>
+        </div>
+  <% end %>
+</div>
+        <div class="fixed-bottom-container d-flex align-items-end flex-column">
+          <div class="mt-auto p-2">
+            <%= @total %>$
+            <%= link_to "Checkout", update_status_order_path(order), data: {turbo_method: :patch }, class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
+
+            <%#= link_to "Checkout", update_status_order_path(order), method: :patch, class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
+            <%#= link_to "Checkout", update_order_path(order), method: :patch,  class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
+          </div>
+        </div>
+<% end %>
+
+</div>

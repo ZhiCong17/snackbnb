@@ -5,7 +5,6 @@ class SnacksController < ApplicationController
 
   def show
     @snack = Snack.find(params[:id])
-    @query_params = { cart: current_user.cart.id } if current_user.cart?
   end
 
   def new

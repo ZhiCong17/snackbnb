@@ -19,4 +19,21 @@
     </div>
   </div>
 
+    <div class="col-3">
+      <div class='card'>
+        <%= simple_form_for [@snack, @order_item] do |f| %>
+          <%= f.input :snack_quantity, input_html: {
+            min: 1,
+            max: @snack.quantity
+          }  %>
+          <%= f.submit %>
+        <% end %>
+
+
+
+        <%#= link_to 'Add to cart', add_to_cart_snack_path(@snack), class: "btn btn-primary" %>
+        <%# <button type="button" class="btn btn-light">Add to Cart</button> %>
+      </div>
+    </div>
+  </div>
 </div>

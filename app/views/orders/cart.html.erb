@@ -22,6 +22,7 @@
               <p><%= description %></p>
             </div>
             <div class= mx-5 >
+              <%= link_to "Delete", order_item_path(list), data: {turbo_method: :delete} %>
               <p><small>Price:<%= price_per_unit %>$</small></p>
               <p><small>Quantity:<%= list.snack_quantity %>pcs</small></p>
               <p><small>Total Price: <%= total_price %>$</small></p>
@@ -34,8 +35,6 @@
             <%= @total %>$
             <%= link_to "Checkout", update_status_order_path(order), data: {turbo_method: :patch }, class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
 
-            <%#= link_to "Checkout", update_status_order_path(order), method: :patch, class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
-            <%#= link_to "Checkout", update_order_path(order), method: :patch,  class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
           </div>
         </div>
 <% end %>

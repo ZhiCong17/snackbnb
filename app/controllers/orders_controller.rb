@@ -36,10 +36,8 @@ class OrdersController < ApplicationController
       snack_store = snack.quantity
       item_quantity = item.snack_quantity
       @total = item.snack_quantity * snack.price
-
-
       if snack_store >= item_quantity
-        current_store = snack_store - item
+        current_store = snack_store - item_quantity
         snack.update!(quantity: current_store.to_i)
         @order.update!(status: "paid")
         redirect_to cart_path, notice: "Order status updated to paid."
@@ -47,15 +45,6 @@ class OrdersController < ApplicationController
         redirect_to cart_path, notice: "Not enough stock, please remove Order: #{@order.id}."
       end
     end
-    # update_snack(@order)
-    # if @order.status ==  "paid"
-    #   # Successfully updated the order status to "paid"
-    #   redirect_to cart_path, notice: "Order status updated to paid."
-    # else
-    #   raise
-    #   # Failed to update the order status
-    #   render :cart, notice: "Store not enough"
-    # end
   end
 
   def set_order

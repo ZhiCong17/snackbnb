@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row my-2">
       <% @snacks.each do |snack| %>
+      <% if snack.quantity > 0 %>
         <div class="col-6 col-md-3 mb-4" >
           <div class="bg-white rounded shadow h-100">
             <div class="d-flex">
@@ -23,6 +24,7 @@
               </div>
             </div>
         </div>
+        <% end %>
       <% end %>
   </div>
 </div>

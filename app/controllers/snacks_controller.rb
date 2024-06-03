@@ -2,12 +2,10 @@ class SnacksController < ApplicationController
   def mine
     @snacks = Snack.where(user: current_user)
   end
-  
+
   def show
     @snack = Snack.find(params[:id])
-    @query_params = {
-      cart: 5
-    }
+    @query_params = { cart: current_user.cart.id } if current_user.cart?
   end
 
   def new
@@ -36,6 +34,7 @@ class SnacksController < ApplicationController
   end
 
   def add_to_cart
+    @snack = Snack.find(params[:id])
 
   end
 
@@ -44,12 +43,4 @@ class SnacksController < ApplicationController
   def snack_params
     params.require(:snack).permit(:name, :description, :price, :quantity, :photo)
   end
-
-  # def cart_params
-  #   if Order.present?
-
-  #   else
-
-  #   end
-  # end
 end

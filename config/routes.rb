@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :snacks do
     member do
-      get :add_to_cart
+      get "add_to_cart", to: "snacks#add_to_cart"
     end
   end
   #, as: 'edit_snack'

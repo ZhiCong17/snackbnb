@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   #   resources :snacks
   # end
   resources :orders
+  patch 'orders/:id', to: 'orders#update', as: :update_order
+
   resources :snacks do
     member do
       get "add_to_cart", to: "snacks#add_to_cart"
     end
   end
   #, as: 'edit_snack'
-
-
 end

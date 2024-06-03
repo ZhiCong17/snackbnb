@@ -1,6 +1,10 @@
 <div class="container">
   <% @order_lists.each do |lists| %>
+          <% order_id = lists.first.order_id %>
+          <% order = Order.find_by(id: order_id.to_i) %>
+          <h4>Status: <%= order.status %></h4>
  <div class="border border-dark my-2 p-2 rounded-5">
+      <p>Order ID: <%= order.id %></p>
       <% lists.each do |list| %>
         <div class="card-product my-2">
                   <%  snacks = Snack.where(id: list.snack_id) %>
@@ -24,12 +28,21 @@
             </div>
         </div>
       <% end %>
+
+      <% if order.status == "unpaid" %>
+        <div class="fixed-bottom-container d-flex align-items-end flex-column">
+          <div class="mt-auto p-2">
+            <%= @total %>$
+            <%= link_to "Checkout", update_order_path(order), class: "text-decoration-none bg-primary text-white p-2 rounded-3" %>
+          </div>
+        </div>
+      <% elsif order.status == "paid" %>
+          <div class="fixed-bottom-container d-flex align-items-end flex-column">
+          <div class="mt-auto p-2">
+            <button class = "btn btn-primary rounded-3"><small>Receive</small></button>
+          </div>
+        </div>
+      <% end %>
 </div>
   <% end %>
 </div>
-  <div class="fixed-bottom-container d-flex align-items-end flex-column">
-    <div class="mt-auto p-2">
-      <%= @total %>$
-      <button class = "btn btn-primary rounded-3"><small>CheckOut</small></button>
-  </div>
-  </div>

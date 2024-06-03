@@ -1,5 +1,4 @@
 <div class="container mt-2">
-
   <div class="row">
     <div class="image_wrapper bg-white py-3 col-6">
       <% if @snack.photo.attached? %>
@@ -8,19 +7,11 @@
         <%= image_tag @snack.image_url, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
       <% end %>
     </div>
-
     <div class="text_wrapper card col-6">
-      <h1><%= @snack.name %></h1>
-      <p>SGD <%= @snack.price %></p>
+      <h1 class="fs-1"><strong><%= @snack.name %></strong></h1>
+      <p class='fs-3'>SGD <%= @snack.price %></p>
       <p>Only <%= @snack.quantity %> remaining in stock</p>
-      <%= link_to 'Add to cart', add_to_cart_snack_path(@snack, @query_params), class: "b_add_to btn btn-primary" %>
-      <p><strong>Description</strong></p>
-      <p><%= @snack.description %></p>
-    </div>
-  </div>
-
-    <div class="col-3">
-      <div class='card'>
+      <div class='card p-2 mb-2' style="width: 200px;">
         <%= simple_form_for [@snack, @order_item] do |f| %>
           <%= f.input :snack_quantity, input_html: {
             min: 1,
@@ -29,11 +20,40 @@
           <%= f.submit %>
         <% end %>
 
+        <p>working on button below</p>
+        <%= simple_form_for [@snack, @order_item] do |f| %>
+          <div class="quantity-wrapper row">
+            <div class='col-3'>
+              <button type="button" class="quantity-decrease">-</button>
+            </div>
+            <div class='col-6'>
+              <%= f.input :snack_quantity, input_html: {
+                min: 1,
+                max: @snack.quantity,
+                value: 1, # Set a default value
+                class: "quantity-input"
+              }  %>
+            </div>
+            <div class='col-3'>
+              <button type="button" class="quantity-increase">+</button>
+            </div>
+          </div>
+          <%= f.submit %>
+        <% end %>
 
+        <p>below are button</p>
+        <div class="qty-input">
+	        <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+	          <input class="product-qty" type="number" name="product-qty" min="0" max="10" value="1">
+	        <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
+        </div>
 
         <%#= link_to 'Add to cart', add_to_cart_snack_path(@snack), class: "btn btn-primary" %>
         <%# <button type="button" class="btn btn-light">Add to Cart</button> %>
       </div>
+      <%#= link_to 'Add to cart', add_to_cart_snack_path(@snack, @query_params), class: "b_add_to btn btn-primary" %>
+      <p class='fs-5 mb-0'><strong>Description:</strong></p>
+      <p><%= @snack.description %></p>
     </div>
   </div>
 </div>

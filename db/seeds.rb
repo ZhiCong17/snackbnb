@@ -31,8 +31,8 @@ super_ring = Snack.create!( name: "super ring", description: "Kids-all time favo
 # end
 
 puts "Creating order..."
-order1 = Order.create!(user: jia, status: "paid")
-order2 = Order.create!(user: ning)
+# order1 = Order.create!(user: jia, status: "paid")
+# order2 = Order.create!(user: ning)
 # order3 = Order.create!(user: jia)
 
 puts "Creating order_list..."

@@ -11,7 +11,7 @@ class OrderItemsController < ApplicationController
     )
 
     if @order_item.save
-      redirect_to orders_path
+      redirect_to cart_path
     end
   end
 end

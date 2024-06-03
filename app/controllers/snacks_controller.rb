@@ -5,7 +5,7 @@ class SnacksController < ApplicationController
 
   def show
     @snack = Snack.find(params[:id])
-    @query_params = { cart: current_user.cart.id } if current_user.cart?
+    @order_item = OrderItem.new
   end
 
   def new
@@ -35,7 +35,9 @@ class SnacksController < ApplicationController
 
   def add_to_cart
     @snack = Snack.find(params[:id])
-
+    @cart = current_user.cart
+    @order_item = OrderItem.new
+    @query_params = { product: @snack.id }
   end
 
   private

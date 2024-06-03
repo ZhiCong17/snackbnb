@@ -1,7 +1,7 @@
 <div class="container mt-2">
   <h1>Order page</h1>
   <p>How many <%= @snack.name %> would you like to purchase?</p>
-  <%= simple_form_for [@cart, @order_item] do |f| %>
+  <%= simple_form_for @order_item do |f| %>
     <%= f.input :snack_quantity %>
     <%= f.submit %>
   <% end %>

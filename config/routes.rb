@@ -19,16 +19,17 @@ Rails.application.routes.draw do
   # resources :users do
   #   resources :snacks
   # end
-  resources :orders do
-    resources :order_items
-    # post "order_items", to: "order_items#create"
-  end
-
+  resources :orders
+\
   resources :snacks do
     member do
       get "add_to_cart", to: "snacks#add_to_cart"
     end
+
+    resources :order_items, only: [:create]
   end
+
+  get 'cart', to: 'orders#cart'
   #, as: 'edit_snack'
 
 

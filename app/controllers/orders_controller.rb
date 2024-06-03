@@ -10,4 +10,7 @@ class OrdersController < ApplicationController
       @order_lists << @order_list
     end
   end
+
+  def cart
+  end
 end

@@ -5,6 +5,7 @@ class SnacksController < ApplicationController
 
   def show
     @snack = Snack.find(params[:id])
+    @order_item = OrderItem.new
   end
 
   def new

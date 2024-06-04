@@ -28,10 +28,13 @@ Rails.application.routes.draw do
 
   get 'order_history', to: 'orders#order_history'
 
+
   resources :snacks do
     member do
       get "add_to_cart", to: "snacks#add_to_cart"
+      delete "delete", to: "snacks#destroy"
     end
+
 
     resources :order_items, only: [:create]
   end

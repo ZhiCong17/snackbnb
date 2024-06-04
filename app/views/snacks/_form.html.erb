@@ -1,8 +1,15 @@
-<%= simple_form_for(snack) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :quantity %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+  <%= simple_form_for(snack) do |f| %>
+    <div class="row">
+    <div class="col-6">
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :quantity %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit %>
+    </div>
+    <div class="col-6 ">
+      <%= image_tag "https://www.sarahremmer.com/wp-content/uploads/2016/02/kid-reaching-treat.jpg", alt: "snack", height: 300, width: 300 , class: "w-100 h-100 object-fit-fill border rounded" %>
+    </div>
+    </div>
+  <% end %>

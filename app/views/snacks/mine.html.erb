@@ -24,6 +24,7 @@
             <div class="position-relative flex-grow-1 d-flex">
               <div class="position-absolute card-links">
                 <%= link_to "Edit", edit_snack_path(snack), class:"text-decoration-none text-lowercase" %>
+                <%= link_to "🗑️", delete_snack_path(snack), data: {turbo_method: :delete} , class: "text-decoration-none py-1 px-3 rounded-3"%>
               </div>
               <div class="p-3 rounded-bottom d-flex flex-grow-1 flex-column">
                 <strong><%= snack.name %> <span class="text-muted font-weight-normal"></span></strong>

@@ -33,6 +33,16 @@ class SnacksController < ApplicationController
     redirect_to snack_path(@snack)
   end
 
+  def destroy
+    @snack = Snack.find(params[:id])
+    # raise
+    if @snack.destroy!
+      redirect_to mine_path, alert: "#{@snack.name} successful remove from my list"
+    else
+      redirect_to mine_path, alert: "Failed to remove #{@snack.name}."
+    end
+  end
+
   def add_to_cart
     @snack = Snack.find(params[:id])
     @cart = current_user.cart

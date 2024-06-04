@@ -7,11 +7,11 @@
         <%= image_tag @snack.image_url, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
       <% end %>
     </div>
-    <div class="text_wrapper card col-6" data-controller="quantity-button">
+    <div class="text_wrapper card col-6 pt-2" data-controller="quantity-button">
       <h1 class="fs-1"><strong><%= @snack.name %></strong></h1>
       <p class='fs-3'>SGD <%= @snack.price %></p>
       <p>Only <%= @snack.quantity %> remaining in stock</p>
-      <div class='card p-2 mb-2' style="width: 200px;">
+      <div class='card py-2 mb-2 text-center rounded' style="width: 150px;">
         <div>
         <p>Order Quantity</p>
           <button type="button" data-action="quantity-button#decrement" data-quantity-button-target="minusButton" class="qty-count qty-count--minus">-</button>
@@ -27,9 +27,8 @@
             data: { quantity_button_target:"input" },
             class: 'd-none'
           } %>
-          <%= f.submit %>
+          <%= f.submit 'Add To Cart' %>
         <% end %>
-
         <%#= link_to 'Add to cart', add_to_cart_snack_path(@snack), class: "btn btn-primary" %>
         <%# <button type="button" class="btn btn-light">Add to Cart</button> %>
       </div>
@@ -38,4 +37,6 @@
       <p><%= @snack.description %></p>
     </div>
   </div>
+
+  <%= render 'related_products', snack: @snack %>
 </div>

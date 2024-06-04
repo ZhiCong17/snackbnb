@@ -14,4 +14,14 @@ class OrderItemsController < ApplicationController
       redirect_to cart_path
     end
   end
+
+  def destroy
+    @order_item = OrderItem.find_by(id: params[:id])
+    # raise
+    if @order_item.destroy!
+      redirect_to cart_path, notice: "Order item was successfully removed."
+    else
+      redirect_to cart_path, alert: "Failed to remove order item."
+    end
+  end
 end

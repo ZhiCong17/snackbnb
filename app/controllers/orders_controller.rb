@@ -27,25 +27,22 @@ class OrdersController < ApplicationController
   end
 
   def update_status
-    update_snack(@order)
-    if @order.update!(status: "paid")
-      # Successfully updated the order status to "paid"
-      redirect_to cart_path, notice: "Order status updated to paid."
-    else
-      # Failed to update the order status
-      render :cart
-    end
-  end
-
-  def update_snack(order)
-    order_items = order.order_items
-    order_items.each do |item|
+    @order_lists = []
+    @order_list = @order.order_items
+    @order_lists << @order_list
+    @order_lists.each do |items|
+      item = items.first
       snack = Snack.find_by(id: item.snack_id)
       snack_store = snack.quantity
-      item = item.snack_quantity
-      if snack_store > item
-        current_store = snack_store - item
+      item_quantity = item.snack_quantity
+      @total = item.snack_quantity * snack.price
+      if snack_store >= item_quantity
+        current_store = snack_store - item_quantity
         snack.update!(quantity: current_store.to_i)
+        @order.update!(status: "paid")
+        redirect_to cart_path, notice: "Order status updated to paid."
+      else
+        redirect_to cart_path, notice: "Not enough stock, please remove Order: #{@order.id}."
       end
     end
   end

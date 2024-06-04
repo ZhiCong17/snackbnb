@@ -6,7 +6,7 @@
           <div class="bg-white rounded shadow h-100">
             <div class="d-flex">
               <div class="text-center pt-2 flex-grow-1">
-                <%= cl_image_tag snack.photo.key, alt: snack.name, height: 80, width: 80 , class: "rounded" if snack.photo.attached? %>
+                <%= cl_image_tag snack.image_with_default, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
               </div>
               <%= link_to "view", snack_path(snack), class:"text-decoration-none text-lowercase me-2" %>
             </div>

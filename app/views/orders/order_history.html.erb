@@ -16,7 +16,6 @@
                   <%  snacks = Snack.where(id: list.snack_id) %>
                   <% snack = snacks.first
                   name = snack.name
-                  image = snack.image_url
                   description = snack.description
                   price_per_unit = snack.price
                   total_price = list.snack_quantity * snack.price

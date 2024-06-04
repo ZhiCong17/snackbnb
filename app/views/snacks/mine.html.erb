@@ -5,7 +5,7 @@
     </div>
     <div class="text-center">
       <%= image_tag "https://50gram.com.my/wp-content/uploads/2022/04/50G_2029-scaled.jpg", height: 100, width: 100, class: "rounded-circle mb-2" %>
-      <h4><%= current_user.email %></h4>
+      <h4><%= current_user.email.split('@').first.capitalize %></h4>
     </div>
     <div>
       <%= link_to "+ Add New Items", new_snack_path, class: 'btn btn-primary' %>

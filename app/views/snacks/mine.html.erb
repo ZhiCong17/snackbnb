@@ -17,15 +17,14 @@
         <div class="col-6 mb-4" >
           <div class="d-flex align-items-center bg-white rounded shadow px-4 card-body">
             <div class="py-3">
-              <% if snack.photo.attached? %>
-                <%= cl_image_tag snack.photo.key, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
-              <% else %>
-                <%= image_tag snack.image_url, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
-              <% end %>
+
+              <%= cl_image_tag snack.image_with_default, alt: snack.name, height: 80, width: 80 , class: "rounded" %>
+
             </div>
             <div class="position-relative flex-grow-1 d-flex">
               <div class="position-absolute card-links">
                 <%= link_to "Edit", edit_snack_path(snack), class:"text-decoration-none text-lowercase" %>
+                <%= link_to "🗑️", delete_snack_path(snack), data: {turbo_method: :delete} , class: "text-decoration-none py-1 px-3 rounded-3"%>
               </div>
               <div class="p-3 rounded-bottom d-flex flex-grow-1 flex-column">
                 <strong><%= snack.name %> <span class="text-muted font-weight-normal"></span></strong>

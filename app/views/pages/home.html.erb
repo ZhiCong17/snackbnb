@@ -1,4 +1,32 @@
 <div class="container">
+  <div id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel">
+    <div class="carousel-inner object-fit-contain">
+      <div class="carousel-item active object-fit-contain">
+        <img src="https://auntyesthers.com/cdn/shop/files/new-webbanner-2web_1024x1024.jpg?v=1652321215" height="480" class="d-block w-100" alt="chips">
+      </div>
+      <div class="carousel-item object-fit-contain">
+        <img src="https://www.milk-food.de/wp-content/uploads/2020/12/MILK-Nestle-KitKat-Jahrespromotion-2019-02-1920x1080.jpg" height="480" class="d-block w-100" alt="munchy">
+      </div>
+      <div class="carousel-item object-fit-contain">
+        <img src="https://mustvisit.sg/wp-content/uploads/2020/03/NTUC-Haagen-Dazs-3-For-25-dollars-1.jpg" height="480" class="d-block w-100" alt="haagendaz">
+      </div>
+      <div class="carousel-item object-fit-contain">
+        <img src="https://jithwa.home.blog/wp-content/uploads/2019/05/02_munchys-fb-share-1200x630-ourbrand.png?w=1024" height="480" class="d-block w-100" alt="haagendaz">
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+
   <div class="row my-2">
       <% @snacks.each do |snack| %>
       <% if snack.quantity > 0 %>

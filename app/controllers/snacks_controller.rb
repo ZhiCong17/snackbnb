@@ -40,6 +40,11 @@ class SnacksController < ApplicationController
     @query_params = { product: @snack.id }
   end
 
+  # def get_email_username(email)
+  #   email.split('@')[0]
+  #   @username = get_email_username(email)
+  # end
+
   private
 
   def snack_params

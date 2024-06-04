@@ -39,7 +39,7 @@
                   description = snack.description
                   price_per_unit = snack.price
                   total_price = list.snack_quantity * snack.price
-                  @total += total_price
+                  @total += total_price.round(2)
                 %>
             <% if snack.photo.attached? %>
               <%= cl_image_tag snack.photo.key, alt: name, height: 80, width: 80 , class: "rounded" %>
@@ -51,10 +51,14 @@
               <p><%= description %></p>
             </div>
             <div class= mx-5 >
-              <%= link_to "🗑️", order_item_path(list), data: {turbo_method: :delete} , class: "text-decoration-none bg-primary py-1 px-3 rounded-3"%>
               <p><small>Price:<%= price_per_unit %>$</small></p>
               <p><small>Quantity:<%= list.snack_quantity %>pcs</small></p>
-              <p><small>Total Price: <%= total_price %>$</small></p>
+              <p><small>Total Price: <%= total_price.round(2) %>$</small></p>
+            </div>
+            <div>
+              <p class= "text-end fs-6">
+              <%= link_to "🗑️", order_item_path(list), data: {turbo_method: :delete} , class: " text-decoration-none text-end py-1 px-3 rounded-3"%>
+              </p>
             </div>
         </div>
   <% end %>

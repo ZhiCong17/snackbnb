@@ -4,6 +4,10 @@ class Snack < ApplicationRecord
 
   has_one_attached :photo
 
+  def related_products
+    Snack.where.not(id: id).limit(4)
+  end
+  
   def image_with_default
     if photo.key?
       photo.key

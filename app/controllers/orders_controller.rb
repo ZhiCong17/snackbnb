@@ -40,9 +40,9 @@ class OrdersController < ApplicationController
         current_store = snack_store - item_quantity
         snack.update!(quantity: current_store.to_i)
         @order.update!(status: "paid")
-        redirect_to cart_path, notice: "Order status updated to paid."
+        redirect_to cart_path, alert: "Order status updated to paid."
       else
-        redirect_to cart_path, notice: "Not enough stock, please remove Order: #{@order.id}."
+        redirect_to cart_path, alert: "Not enough stock, please remove Order: #{@order.id}."
       end
     end
   end

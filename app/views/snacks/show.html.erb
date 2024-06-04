@@ -1,11 +1,9 @@
 <div class="container mt-2">
   <div class="row">
     <div class="image_wrapper bg-white py-3 col-6">
-      <% if @snack.photo.attached? %>
-        <%= cl_image_tag @snack.photo.key, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
-      <% else %>
-        <%= image_tag @snack.image_url, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
-      <% end %>
+
+      <%= cl_image_tag @snack.image_with_default, alt: @snack.name, height: 300, width: 300 , class: "rounded mx-auto d-block" %>
+
     </div>
     <div class="text_wrapper card col-6 pt-2" data-controller="quantity-button">
       <h1 class="fs-1"><strong><%= @snack.name %></strong></h1>

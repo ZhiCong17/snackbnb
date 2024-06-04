@@ -7,4 +7,10 @@ class Snack < ApplicationRecord
   def related_products
     Snack.where.not(id: id).limit(4)
   end
+  
+  def image_with_default
+    if photo.key?
+      photo.key
+    end
+  end
 end

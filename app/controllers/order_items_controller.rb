@@ -21,12 +21,13 @@ class OrderItemsController < ApplicationController
 
     else
       snack_quantity = params[:order_item][:snack_quantity]
-      current_quantity = orders.first.snack_quantity + snack_quantity.to_i
+      cart_quantity = orders.first.snack_quantity
+      current_quantity = cart_quantity + snack_quantity.to_i
       if current_quantity < @snack.quantity
         orders.update!(snack_quantity: current_quantity)
         redirect_to cart_path
       else
-        redirect_to snack_path(@snack), alert: "Fail to add into cart. Hit the store limit quantity"
+        redirect_to snack_path(@snack), alert: "Fail to add into cart. #{@snack.name} contains #{cart_quantity}pcs in cart.Hit the store limit quantity"
       end
     end
   end

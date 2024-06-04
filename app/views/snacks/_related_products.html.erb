@@ -6,7 +6,7 @@
       <div class="col-3 text-center">
         <%#= cl_image_tag related_snack.photo.key if related_snack.photo.key? %>
         <%= link_to(snack_path(related_snack), {class: "text-decoration-none"}) do %>
-          <%= image_tag related_snack.image_url, width: "100%" %>
+          <%= cl_image_tag related_snack.image_with_default, width: "100%" %>
           <%= related_snack.name %>
         <% end %>
       </div>

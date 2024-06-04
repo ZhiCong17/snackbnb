@@ -3,10 +3,12 @@
   <div class="row">
     <% snack.related_products.each do |related_snack| %>
 
-      <div class="col-3">
+      <div class="col-3 text-center">
         <%#= cl_image_tag related_snack.photo.key if related_snack.photo.key? %>
-        <%= image_tag related_snack.image_url, width: "100%" %>
-        <%= related_snack.name %>
+        <%= link_to(snack_path(related_snack), {class: "text-decoration-none"}) do %>
+          <%= image_tag related_snack.image_url, width: "100%" %>
+          <%= related_snack.name %>
+        <% end %>
       </div>
 
     <% end %>

@@ -18,17 +18,8 @@
           <span class="product-qty" data-quantity-button-target="label" data-min="1" data-max="<%= @snack.quantity %>">1</span>
           <button type="button" data-action="quantity-button#increment" data-quantity-button-target="addButton" class="qty-count qty-count--add">+</button>
         </div>
+        <%= render 'form_for_show', snack: @snack, order_item: @order_item %>
 
-        <%= simple_form_for [@snack, @order_item] do |f| %>
-          <%= f.input :snack_quantity, label: false, input_html: {
-            min: 1,
-            max: @snack.quantity,
-            value: 1,
-            data: { quantity_button_target:"input" },
-            class: 'd-none'
-          } %>
-          <%= f.submit 'Add To Cart' %>
-        <% end %>
         <%#= link_to 'Add to cart', add_to_cart_snack_path(@snack), class: "btn btn-primary" %>
         <%# <button type="button" class="btn btn-light">Add to Cart</button> %>
       </div>

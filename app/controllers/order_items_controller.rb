@@ -23,7 +23,7 @@ class OrderItemsController < ApplicationController
       snack_quantity = params[:order_item][:snack_quantity]
       cart_quantity = orders.first.snack_quantity
       current_quantity = cart_quantity + snack_quantity.to_i
-      if current_quantity < @snack.quantity
+      if current_quantity <= @snack.quantity
         orders.update!(snack_quantity: current_quantity)
         redirect_to cart_path
       else

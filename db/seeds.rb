@@ -69,11 +69,6 @@ almond = Snack.new(name: "Almond", description: "Taste like nuts", price: 4.99, 
 almond.photo.attach(io: file, filename: "almond.jpg", content_type: "image/jpg")
 almond.save
 
-file = URI.open("https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/11720126_XL1_20220316.jpg")
-almond = Snack.new(name: "Almond", description: "Taste like nuts", price: 4.99, quantity: 20, user: tom)
-almond.photo.attach(io: file, filename: "almond.jpg", content_type: "image/jpg")
-almond.save
-
 file = URI.open("https://admin115421-prod.s3.ap-southeast-2.amazonaws.com/public/product-hrkM_HL9BJScBo10YjtYh-0-350-350.jpg")
 twiggies = Snack.new(name: "Twiggies", description: "All time favourite", price: 2.50, quantity: 20, user: tom)
 twiggies.photo.attach(io: file, filename: "twiggies.jpg", content_type: "image/jpg")

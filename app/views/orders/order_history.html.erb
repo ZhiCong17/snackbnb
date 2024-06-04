@@ -22,7 +22,7 @@
                   total_price = list.snack_quantity * snack.price
                   @total += total_price
                 %>
-            <%= image_tag image, alt: name, height: 80, width: 80 , class: "rounded" %>
+            <%= cl_image_tag snack.photo.key, alt: name, height: 80, width: 80 , class: "rounded" if snack.photo.attached? %>
             <div class="card-product-infos flex-grow-1">
               <h2><%= name %></h2>
               <p><%= description %></p>
